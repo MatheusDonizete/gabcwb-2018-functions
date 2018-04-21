@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Global Azure Bootcamp Curitiba - 2018</title>
+
+    <style>
+        *{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>Global Azure Bootcamp Curitiba - 2018</h1>
+        <h2>Olá, GAB Curitiba!!</h2>
+        <ul id="data"></ul>
+    </main>
+    <script>
+        const container = document.getElementById('data');
+        fetch('/api/list')
+            .then(res => res.json())
+            .then(data => {
+                const values = data.message.map(e => `<li>${e.name} ${e.lastName}</li>`)
+                    .reduce((previous, current) => previous + current);   
+                    
+                data.innerHTML = values;
+            });
+    </script>
+</body>
+</html>
